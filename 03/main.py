@@ -16,8 +16,11 @@ def map_common(lines):
 	common = {k: '1' if v / len(lines) >= 0.5 else '0' for k, v in count.items()}
 	return common
 
+def map_common_new(lines):
+	return {i: '1' if col.count('1') / len(col) >= 0.5 else '0' for i, col in enumerate(list(zip(*lines)))}
+
 def part1(lines):
-	common = map_common(lines)
+	common = map_common_new(lines)
 	number_common = ''.join(list(common.values()))
 	number_uncommon = number_common.replace('1', 'x').replace('0', '1').replace('x', '0')
 	print('PART 1:', int(number_common, 2) * int(number_uncommon, 2))
@@ -38,4 +41,6 @@ def part2(lines):
 	print('PART 2:', int(number_common, 2) * int(number_uncommon, 2))
 
 part1(lines)
-part2(lines)
+# part2(lines)
+
+# TODO
